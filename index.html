@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+     body {
+         background: #e0eaf9;
+     }
+
+     .mermaid {
+         position: absolute;
+
+         -webkit-filter: drop-shadow(3px 1px 5px rgba(0,0,0,0.2));
+
+         -webkit-animation:tilt 3s infinite ease-in-out;
+     }
+
+     .mermaid-rotation {
+         position: absolute;
+         width: 289px;
+         height: 536px;
+         transform: translate(100px, 100px) rotate(50deg);
+         -webkit-animation: swim 10s infinite ease-in-out;
+     }
+
+     @-webkit-keyframes tilt {
+         0% { transform:rotate(-10deg); }
+         50% { transform:rotate(5deg); }
+         100% { transform:rotate(-10deg); }
+     }
+
+     @-webkit-keyframes swim {
+         0% { transform: translate(100px, 100px) rotate(70deg); }
+
+         45% { transform: translate(490px, 100px) rotate(70deg); }
+         50% { transform: translate(500px, 100px) rotate(-100deg); }
+
+         95% { transform: translate(110px, 100px) rotate(-100deg); }
+         100% { transform: translate(100px, 100px) rotate(70deg); }
+     }
+    </style>
+  </head>
+  <body>
+      <div class="mermaid-rotation">
+          <img class="mermaid" src="./mermaid.png">
+      </div>
+  </body>
+</html>
