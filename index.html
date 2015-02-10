@@ -10,17 +10,36 @@
          position: absolute;
 
          -webkit-filter: drop-shadow(3px 1px 5px rgba(0,0,0,0.2));
+     }
 
+     .mermaid-pos {
+         position: absolute;
+         width: 289px;
+         height: 536px;
+     }
+
+     .mermaid-tilt {
          -webkit-animation:tilt 3s infinite ease-in-out;
      }
 
      .mermaid-rotation {
-         position: absolute;
-         width: 289px;
-         height: 536px;
          transform: translate(100px, 100px) rotate(50deg);
          -webkit-animation: swim 10s infinite ease-in-out;
      }
+
+     .mermaid-flip {
+         -webkit-animation: flip 1s ease-in-out;
+     }
+
+     .mermaid-swim {
+         -webkit-animation: swim 3s ease-in-out;
+     }
+
+     button {
+         font-size: 30px;
+         border-radius: 30px;
+     }
+
 
      @-webkit-keyframes tilt {
          0% { transform:rotate(-10deg); }
@@ -28,20 +47,51 @@
          100% { transform:rotate(-10deg); }
      }
 
+     @-webkit-keyframes flip {
+         0% { transform:rotate(0deg); }
+         100% { transform:rotate(-359deg); }
+     }
+
      @-webkit-keyframes swim {
-         0% { transform: translate(100px, 100px) rotate(70deg); }
+         0% { transform: translate(0px, 0px) rotate(0deg); }
 
-         45% { transform: translate(490px, 100px) rotate(70deg); }
-         50% { transform: translate(500px, 100px) rotate(-100deg); }
+         45% { transform: translate(490px, 0px) rotate(70deg); }
+         50% { transform: translate(500px, 0px) rotate(-100deg); }
 
-         95% { transform: translate(110px, 100px) rotate(-100deg); }
-         100% { transform: translate(100px, 100px) rotate(70deg); }
+         95% { transform: translate(110px, 0px) rotate(-100deg); }
+         100% { transform: translate(0px, 0px) rotate(0deg); }
      }
     </style>
   </head>
   <body>
-      <div class="mermaid-rotation">
-          <img class="mermaid" src="./mermaid.png">
+      <button name="flip">Flip</button>
+      <button name="swim">Swim</button>
+
+      <div id="mermaid-holder" class="mermaid-pos">
+          <div class="mermaid-pos" style="transform: translate(100px, 100px)">
+              <div class="mermaid-tilt mermaid-pos">
+                  <img class="mermaid" src="./mermaid.png">
+              </div>
+          </div>
       </div>
+
+    <script>
+var mermaidElem = document.getElementById('mermaid-holder');
+var flipButton = document.querySelector('[name=flip]');
+var swimButton = document.querySelector('[name=swim]');
+
+mermaidElem.addEventListener('webkitAnimationEnd', reset);
+
+function reset () {
+    mermaidElem.setAttribute('class', 'mermaid-pos');
+}
+
+function doSomething (name) {
+    mermaidElem.setAttribute('class', 'mermaid-pos mermaid-' + name);
+}
+
+flipButton.onclick = doSomething.bind(null, 'flip');
+swimButton.onclick = doSomething.bind(null, 'swim');
+    </script>
   </body>
 </html>
