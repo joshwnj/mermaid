@@ -17,3 +17,8 @@ Starting with the very basics:
 - put the drawing on a web page,
 - make it move,
 - play with different animation settings.
+
+## 3. Teach the mermaid some tricks.
+
+- add some buttons that apply a certain animation when clicked
+- experiment with different kinds of animations
